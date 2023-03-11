@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Deserialize)]
 pub(crate) struct SortRequestPayload {
     pub(crate) categories: Vec<Category>,
-    pub(crate) items: Vec<Bookmark>,
+    pub(crate) items: Vec<Item>,
 }
 
 #[derive(Deserialize)]
@@ -18,7 +18,7 @@ pub(crate) struct Category {
 #[derive(Deserialize)]
 #[derive(Serialize)]
 #[derive(Clone)]
-pub(crate) struct Bookmark {
+pub(crate) struct Item {
     pub(crate) id: usize,
     pub(crate) title: String,
 }
@@ -33,7 +33,12 @@ pub(crate) struct Categories {
 #[derive(Serialize)]
 #[derive(Clone)]
 pub(crate) struct CategoryWithItems {
-    pub id: usize,
-    pub title: String,
+    pub category_id: usize,
+    pub category_name: String,
     pub items: Vec<usize>
+}
+
+#[derive(Serialize)]
+pub(crate) struct ErrorResponse {
+    pub message: String,
 }
